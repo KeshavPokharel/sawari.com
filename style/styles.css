@@ -1,6 +1,12 @@
 dialog{
-    margin-right: 17%;
+    margin-right: 7.5%;
+width: 141px;
 border: 1px;
 border-radius: 5%;
 margin-top: 85px;
+width: 141px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
 }

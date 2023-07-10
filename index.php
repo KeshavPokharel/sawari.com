@@ -33,7 +33,7 @@
 <body>
 <dialog id="myAccount">
  <?php  include "forms\accountCheck.php"; ?>
-  <button onclick="myAccount.close()">close</button>
+  <button class="btn btn-danger" onclick="myAccount.close()">close</button>
 </dialog>
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
@@ -49,9 +49,7 @@
               <li><a href="about.php">About us</a></li>
           <li><a href="services.php">Services</a></li>
           <li><a href="contact.php">Contact</a></li>
-           <?php
-          include "forms/accountCheck.php";
-          ?>
+          <li><a class="getstarted" onclick="myAccount.showModal()">My Account</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

@@ -86,43 +86,48 @@
                     <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
     
                     <form class="mx-1 mx-md-4" action="forms/create.php" method="post">
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <label class="form-label" for="fullname">Full Name</label>
+                          <input type="text" id="fullname" name="fullname" class="form-control"/>
+                        </div>
+                      </div>
     
                       <div class="d-flex flex-row align-items-center mb-4">
-                        <div class="input-group">
-                          <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Full Name" />
-                          <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                        <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <label class="form-label" for="email">Email</label>
+                          <input type="email" id="email" name="email" class="form-control"/>
                         </div>
                       </div>
-                      
-                      <div class="d-flex flex-row align-items-center mb-4">
-                        <div class="input-group">
-                          <input type="email" id="email" name="email" class="form-control" placeholder="Email" />
-                          <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
-                        </div>
-                      </div>
-                      
-                      <div class="d-flex flex-row align-items-center mb-4">
-                        <div class="input-group">
-                          <input type="password" id="password" name="password" class="form-control" placeholder="Password" />
-                          <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
-                          <button class="btn btn-outline-secondary" type="button" id="showPasswordButton">
-                            <i class="bi bi-eye"></i>
-                          </button>
-                        </div>
-                      </div>
-                      
-                      <div class="d-flex flex-row align-items-center mb-4">
-                        <div class="input-group">
-                          <input type="password" id="cpassword" name="cpassword" class="form-control" placeholder="Repeat Password" />
-                          <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
-                          <button class="btn btn-outline-secondary" type="button" id="showCPasswordButton">
-                            <i class="bi bi-eye"></i>
-                          </button>
-                        </div>
-                      </div>
-                      
-                      
     
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <label class="form-label" for="password">Password</label>
+                          <div class="input-group">
+                            <input type="password" id="password" name="password" class="form-control" />
+                            <button class="btn btn-outline-secondary" type="button" id="showPasswordButton">
+                              <i class="bi bi-eye"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <label class="form-label" for="cpassword">Repeat password</label>
+                          <div class="input-group">
+                            <input type="password" id="cpassword" name="cpassword" class="form-control" />
+                            <button class="btn btn-outline-secondary" type="button" id="showCPasswordButton">
+                              <i class="bi bi-eye"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      
                       <div class="form-check d-flex justify-content-center mb-5">
                         <input class="form-check-input me-2" type="checkbox" value="" id="termsCheckbox"/>
                         <label class="form-check-label" for="form2Example3">

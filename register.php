@@ -81,19 +81,15 @@
           <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
             <form action="forms/verify.php" method="post">    
               <!-- Email input -->
-              <div class="d-flex flex-row align-items-center mb-4">
-              <div class="input-group">
-                <input type="email" id="email" name="email" class="form-control form-control-lg" placeholder="Enter email or phone number" />
-                <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
-              </div>
-            </div>
+           <div class="form-outline mb-4">
+            <label class="form-label" for="email">Email address</label>
+            <input type="email" id="email" name="email" class="form-control form-control-lg" placeholder="Enter email or phone number" />
+          </div>
 
-            <div class="d-flex flex-row align-items-center mb-3">
-              <div class="input-group">
-                <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="Password" />
-                <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
-              </div>
-            </div>
+          <div class="form-outline mb-3">
+            <label class="form-label" for="password">Password</label>
+            <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="Password" />
+          </div>
 
     
               <div class="d-flex justify-content-between align-items-center">
