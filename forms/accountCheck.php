@@ -4,6 +4,7 @@
                 <li><a href="forms\logout.php" class="getstarted">Log Out</a></li></ul>';
 
 } else {
-   echo "no user account found";
+   echo '<ul style="list-style-type: none;"><li><a href="../register.php">Login</a></li>
+                <li><a href="../registration.php" class="getstarted">Register</a></li></ul>';
 }
 ?>
