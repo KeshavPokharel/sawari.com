@@ -187,7 +187,7 @@
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="index.php">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="about.php">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Help</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="faq.php">F.A.Q</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="terms.php">Terms & Conditions</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="privacy.php">Privacy policy</a></li>
             </ul>
