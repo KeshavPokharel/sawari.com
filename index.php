@@ -46,7 +46,8 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="index.php" class="active">Home</a></li>
-              <li><a href="about.php">About us</a></li>
+          <li><a href="about.php">About us</a></li>
+          <li><a href="book.php">Book a Ride</a></li>
           <li><a href="services.php">Services</a></li>
           <li><a href="contact.php">Contact</a></li>
           <li><a class="getstarted" onclick="myAccount.showModal()">My Account</a></li>
