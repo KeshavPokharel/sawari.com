@@ -30,7 +30,14 @@
 </head>
 
 <body>
-
+<dialog id="myAccount" style=" margin-right: 7.5%;
+width: 141px;
+border: 1px;
+border-radius: 5%;
+margin-top: 85px;">
+ <?php  include "forms\accountCheck.php"; ?>
+  <button class="btn btn-danger" onclick="myAccount.close()">close</button>
+</dialog>
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center">
@@ -45,9 +52,11 @@
               <li><a href="about.php">About us</a></li>
           <li><a href="services.php">Services</a></li>
           <li><a href="contact.php">Contact</a></li>
-           <?php
-          include "forms/accountCheck.php";
-          ?>
+          <?php if (isset($_COOKIE['auth_token'])) {
+        echo  '<li><a class="getstarted" style=" cursor:pointer;" onclick="myAccount.showModal()">My Account</a></li>';
+          } else{
+            echo  '<li><a href="register.php" class="getstarted" style=" cursor:pointer;">Login/Register</a></li>';
+          } ?>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

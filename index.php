@@ -50,7 +50,11 @@
           <li><a href="book.php">Book a Ride</a></li>
           <li><a href="services.php">Services</a></li>
           <li><a href="contact.php">Contact</a></li>
-          <li><a class="getstarted" onclick="myAccount.showModal()">My Account</a></li>
+          <?php if (isset($_COOKIE['auth_token'])) {
+        echo  '<li><a class="getstarted" style=" cursor:pointer;" onclick="myAccount.showModal()">My Account</a></li>';
+          } else{
+            echo  '<li><a href="register.php" class="getstarted" style=" cursor:pointer;">Login/Register</a></li>';
+          } ?>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
