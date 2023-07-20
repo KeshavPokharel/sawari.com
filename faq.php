@@ -21,14 +21,20 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="style/styles.css" rel="stylesheet">
 
   <!-- Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-
+<style>
+  
+</style>
 </head>
 
 <body>
-
+<dialog id="myAccount">
+ <?php  include "forms\accountCheck.php"; ?>
+  <button class="btn btn-danger" onclick="myAccount.close()">close</button>
+</dialog>
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center">
@@ -40,21 +46,15 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="index.php" class="active">Home</a></li>
-              <li><a href="about.php">About us</a></li>
+          <li><a href="about.php">About us</a></li>
+          <li><a href="book.php">Book a Ride</a></li>
           <li><a href="services.php">Services</a></li>
-
-          <li class="dropdown"><a href="#"><span>Help</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#" class="active">Send Message</a></li>
-              <li><a href="#">Emergency Support</a></li>
-              <li><a href="faq.php">F.A.Q</a></li>
-            </ul>
-
-          <li><a href="blog.html">Blog</a></li>
           <li><a href="contact.php">Contact</a></li>
-           <?php
-          include "forms/accountCheck.php";
-          ?>
+          <?php if (isset($_COOKIE['auth_token'])) {
+        echo  '<li><a class="getstarted" style=" cursor:pointer;" onclick="myAccount.showModal()">My Account</a></li>';
+          } else{
+            echo  '<li><a href="register.php" class="getstarted" style=" cursor:pointer;">Login/Register</a></li>';
+          } ?>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -263,7 +263,7 @@
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="index.php">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="about.php">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Help</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="faq.php">F.A.Q</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="terms.php">Terms & Conditions</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="privacy.php">Privacy policy</a></li>
             </ul>

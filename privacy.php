@@ -48,6 +48,7 @@ margin-top: 85px;">
         <ul>
           <li><a href="index.php" class="active">Home</a></li>
               <li><a href="about.php">About us</a></li>
+              <li><a href="book.php">Book a Ride</a></li>
           <li><a href="services.php">Services</a></li>
           <li><a href="contact.php">Contact</a></li>
           <?php if (isset($_COOKIE['auth_token'])) {
@@ -77,16 +78,80 @@ margin-top: 85px;">
   
         </div>
       </section><!-- End Breadcrumbs -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <h2 class="text-center mb-4">Privacy Policy</h2>
+                <p>Welcome to Sawari! This Privacy Policy describes how we collect, use, and share your personal
+                    information when you use our ride-hailing services. By using our services, you agree to the terms
+                    of this policy. Please read it carefully.</p>
 
-      <h2>Under Maintenance</h2>
-      <h2>Under Maintenance</h2>
-      <h2>Under Maintenance</h2>
-      <h2>Under Maintenance</h2>
-      <h2>Under Maintenance</h2>
-      <h2>Under Maintenance</h2>
-      <h2>Under Maintenance</h2>
+                <h4>1. Information We Collect</h4>
+                <p>When you sign up for Sawari, we may collect your name, email address, phone number, and location
+                    data. We may also collect information about your device, IP address, and usage patterns to improve
+                    our services.</p>
 
+                <h4>2. How We Use Your Information</h4>
+                <p>We use your information to provide and improve our services, process payments, and communicate with
+                    you about your rides. We may also use your data for marketing purposes, but you can opt-out at any
+                    time.</p>
 
+                <h4>3. Information Sharing</h4>
+                <p>We may share your information with our trusted partners, such as payment processors and service
+                    providers, to deliver our services effectively. Your data will not be sold to third parties without
+                    your consent.</p>
+
+                <h4>4. Security Measures</h4>
+                <p>We take security seriously and use industry-standard measures to protect your data from
+                    unauthorized access or disclosure. However, no method of transmission over the internet is 100%
+                    secure, so we cannot guarantee absolute security.</p>
+
+                <h4>5. Your Choices</h4>
+                <p>You can access, update, or delete your account information in the Sawari app settings. You can also
+                    opt-out of marketing communications by adjusting your preferences.</p>
+
+                <h4>6. Changes to this Policy</h4>
+                <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page, and we
+                    will notify you of significant changes via email or app notifications.</p>
+
+                <p>If you have any questions or concerns about our Privacy Policy, please contact us at
+                    privacy@sawari.com.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add a back-to-top button -->
+    <div class="fixed-bottom mb-4 me-4">
+        <a href="#" class="btn btn-secondary btn-lg back-to-top" role="button"><i
+                class="fas fa-arrow-up"></i></a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+
+    <script>
+        // Back to top button script
+        document.addEventListener("DOMContentLoaded", function () {
+            var backToTopBtn = document.querySelector(".back-to-top");
+
+            window.addEventListener("scroll", function () {
+                if (window.pageYOffset > 200) {
+                    backToTopBtn.classList.add("show");
+                } else {
+                    backToTopBtn.classList.remove("show");
+                }
+            });
+
+            backToTopBtn.addEventListener("click", function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+        });
+    </script>
 
     <!-- ======= Footer ======= -->
     <footer id="footer">
@@ -117,7 +182,7 @@ margin-top: 85px;">
                 <ul>
                   <li><i class="bx bx-chevron-right"></i> <a href="index.php">Home</a></li>
                   <li><i class="bx bx-chevron-right"></i> <a href="about.php">About us</a></li>
-                  <li><i class="bx bx-chevron-right"></i> <a href="#">Help</a></li>
+                  <li><i class="bx bx-chevron-right"></i> <a href="faq.php">F.A.Q</a></li>
                   <li><i class="bx bx-chevron-right"></i> <a href="terms.php">Terms & Conditions</a></li>
                   <li><i class="bx bx-chevron-right"></i> <a href="privacy.php">Privacy policy</a></li>
                 </ul>

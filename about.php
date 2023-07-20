@@ -48,6 +48,7 @@ margin-top: 85px;">
         <ul>
           <li><a href="index.php" class="active">Home</a></li>
               <li><a href="about.php">About us</a></li>
+              <li><a href="book.php">Book a Ride</a></li>
           <li><a href="services.php">Services</a></li>
           <li><a href="contact.php">Contact</a></li>
           <?php if (isset($_COOKIE['auth_token'])) {
@@ -234,7 +235,7 @@ margin-top: 85px;">
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="index.php">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="about.php">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Help</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="faq.php">F.A.Q</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="terms.php">Terms & Conditions</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="privacy.php">Privacy policy</a></li>
             </ul>
