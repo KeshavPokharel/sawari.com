@@ -77,12 +77,77 @@
       </div>
     </section><!-- End Breadcrumbs -->
 
-    <H1>UNDER MAINTENANCE</H1>
-    <H1>UNDER MAINTENANCE</H1>
-    <H1>UNDER MAINTENANCE</H1>
-    <H1>UNDER MAINTENANCE</H1>
-    <H1>UNDER MAINTENANCE</H1>
-    <H1>UNDER MAINTENANCE</H1>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .card {
+            transition: transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .card-text {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="car.jpg" class="card-img-top" alt="Car Service">
+                    <div class="card-body">
+                        <h5 class="card-title">Car Service</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat nisi
+                            eu dui varius, at vestibulum massa iaculis.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="bike.jpg" class="card-img-top" alt="Bike Service">
+                    <div class="card-body">
+                        <h5 class="card-title">Bike Service</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat nisi
+                            eu dui varius, at vestibulum massa iaculis.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="tuktuk.jpg" class="card-img-top" alt="Tuktuk Service">
+                    <div class="card-body">
+                        <h5 class="card-title">Tuktuk Service</h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat nisi
+                            eu dui varius, at vestibulum massa iaculis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 
 
   <!-- ======= Footer ======= -->

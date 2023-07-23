@@ -47,8 +47,8 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="index.php" class="active">Home</a></li>
-              <li><a href="about.php">About us</a></li>
-              <li><a href="book.php">Book a Ride</a></li>
+          <li><a href="about.php">About us</a></li>
+          <li><a href="book.php">Book a Ride</a></li>
           <li><a href="services.php">Services</a></li>
           <li><a href="contact.php">Contact</a></li>
           <?php if (isset($_COOKIE['auth_token'])) {
@@ -68,17 +68,16 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Contact</h2>
+          <h2>Book a Ride</h2>
           <ol>
             <li><a href="index.php">Home</a></li>
-            <li>Contact</li>
+            <li>Book a Ride</li>
           </ol>
         </div>
 
       </div>
     </section><!-- End Breadcrumbs -->
 
-    <!-- Book a Ride Section -->
 <!-- Book Ride Section -->
 <section id="book" class="book">
   <div class="container">
@@ -118,7 +117,9 @@
     </form>
 
   </div>
-</section>
+  </section>
+    <!-- End book -->
+
 
 <!-- Book Style -->
 <style>

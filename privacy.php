@@ -69,21 +69,20 @@ margin-top: 85px;">
         <div class="container">
   
           <div class="d-flex justify-content-between align-items-center">
-            <h2>Privacy & Policy</h2>
+            <h2>Privacy Policy</h2>
             <ol>
               <li><a href="index.php">Home</a></li>
-              <li>Privacy & Policy</li>
+              <li>Privacy Policy</li>
             </ol>
           </div>
   
         </div>
       </section><!-- End Breadcrumbs -->
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- ======= Start Privacy Policy ======= -->
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-8 mx-auto">
-                <h2 class="text-center mb-4">Privacy Policy</h2>
                 <p>Welcome to Sawari! This Privacy Policy describes how we collect, use, and share your personal
                     information when you use our ride-hailing services. By using our services, you agree to the terms
                     of this policy. Please read it carefully.</p>
@@ -121,37 +120,7 @@ margin-top: 85px;">
             </div>
         </div>
     </div>
-
-    <!-- Add a back-to-top button -->
-    <div class="fixed-bottom mb-4 me-4">
-        <a href="#" class="btn btn-secondary btn-lg back-to-top" role="button"><i
-                class="fas fa-arrow-up"></i></a>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-
-    <script>
-        // Back to top button script
-        document.addEventListener("DOMContentLoaded", function () {
-            var backToTopBtn = document.querySelector(".back-to-top");
-
-            window.addEventListener("scroll", function () {
-                if (window.pageYOffset > 200) {
-                    backToTopBtn.classList.add("show");
-                } else {
-                    backToTopBtn.classList.remove("show");
-                }
-            });
-
-            backToTopBtn.addEventListener("click", function () {
-                window.scrollTo({
-                    top: 0,
-                    behavior: "smooth"
-                });
-            });
-        });
-    </script>
+<!-- ======= End Privacy Policy ======= -->
 
     <!-- ======= Footer ======= -->
     <footer id="footer">

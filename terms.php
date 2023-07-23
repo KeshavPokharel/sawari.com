@@ -78,15 +78,55 @@
         </div>
       </section><!-- End Breadcrumbs -->
 
-      <h2>Under Maintenance</h2>
-      <h2>Under Maintenance</h2>
-      <h2>Under Maintenance</h2>
-      <h2>Under Maintenance</h2>
-      <h2>Under Maintenance</h2>
-      <h2>Under Maintenance</h2>
-      <h2>Under Maintenance</h2>
+  <!-- ======= Start Terms and Condition ======= -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <p>Welcome to Sawari! By using our ride-hailing services, you agree to comply with the following terms
+                    and conditions. Please read them carefully before using the Sawari platform.</p>
 
+                <h4>1. Eligibility</h4>
+                <p>You must be at least 18 years old to use Sawari's services. By using our platform, you confirm that
+                    you are of legal age.</p>
 
+                <h4>2. Account Registration</h4>
+                <p>When creating an account, you agree to provide accurate and up-to-date information. You are solely
+                    responsible for maintaining the confidentiality of your account and password.</p>
+
+                <h4>3. Service Usage</h4>
+                <p>You agree to use Sawari's services for personal transportation needs only. Any commercial use of the
+                    platform is strictly prohibited.</p>
+
+                <h4>4. User Conduct</h4>
+                <p>You are responsible for your behavior while using the Sawari platform. You must not engage in any
+                    fraudulent, abusive, or illegal activities.</p>
+
+                <h4>5. Payments and Fees</h4>
+                <p>You agree to pay for the rides you book through the Sawari app. Prices may vary based on factors such
+                    as distance, time, and demand.</p>
+
+                <h4>6. Cancellation Policy</h4>
+                <p>You may cancel a ride, but cancellation fees may apply in certain situations. Please review our
+                    cancellation policy for more details.</p>
+
+                <h4>7. Intellectual Property</h4>
+                <p>All content and materials on the Sawari platform are owned or licensed by us and are protected by
+                    intellectual property laws. You must not use, copy, or distribute our content without permission.</p>
+
+                <h4>8. Modifications to the Platform</h4>
+                <p>We reserve the right to modify, suspend, or discontinue any part of the Sawari platform without
+                    notice or liability.</p>
+
+                <h4>9. Termination</h4>
+                <p>We may terminate your access to the Sawari platform if you violate our terms and conditions or for
+                    any other reason at our discretion.</p>
+
+                <p>If you have any questions or concerns about our Terms and Conditions, please contact us at
+                    support@sawari.com.</p>
+            </div>
+        </div>
+    </div>
+<!-- ======= End Terms and Condition ======= -->
 
     <!-- ======= Footer ======= -->
     <footer id="footer">
