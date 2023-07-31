@@ -6,7 +6,7 @@
   border: 1px;
   border-radius: 5%;
   margin-top: 85px;">
-  <?php  include "forms\accountCheck.php"; ?>
+  <?php  include "forms/accountCheck.php"; ?>
     <button class="btn btn-danger" onclick="myAccount.close()">close</button>
   </dialog>
   <meta charset="UTF-8">

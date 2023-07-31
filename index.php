@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +12,9 @@
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -25,16 +28,16 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-<style>
-  
-</style>
+  <style>
+
+  </style>
 </head>
 
 <body>
-<dialog id="myAccount">
- <?php  include "forms\accountCheck.php"; ?>
-  <button class="btn btn-danger" onclick="myAccount.close()">close</button>
-</dialog>
+  <dialog id="myAccount">
+    <?php include "forms/accountCheck.php"; ?>
+    <button class="btn btn-danger" onclick="myAccount.close()">close</button>
+  </dialog>
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center">
@@ -51,9 +54,9 @@
           <li><a href="services.php">Services</a></li>
           <li><a href="contact.php">Contact</a></li>
           <?php if (isset($_COOKIE['auth_token'])) {
-        echo  '<li><a class="getstarted" style=" cursor:pointer;" onclick="myAccount.showModal()">My Account</a></li>';
-          } else{
-            echo  '<li><a href="register.php" class="getstarted" style=" cursor:pointer;">Login/Register</a></li>';
+            echo '<li><a class="getstarted" style=" cursor:pointer;" onclick="myAccount.showModal()">My Account</a></li>';
+          } else {
+            echo '<li><a href="register.php" class="getstarted" style=" cursor:pointer;">Login/Register</a></li>';
           } ?>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -75,7 +78,9 @@
           <div class="carousel-container">
             <div class="container">
               <h2 class="animate__animated animate__fadeInDown">Welcome to <span>SaWari</span></h2>
-              <p class="animate__animated animate__fadeInUp">Sawari is a ride-hailing platform that connects passengers with safe and reliable drivers. Our mission is to provide affordable and accessible transportation to everyone, while also creating job opportunities for drivers in the communities we serve. 
+              <p class="animate__animated animate__fadeInUp">Sawari is a ride-hailing platform that connects passengers
+                with safe and reliable drivers. Our mission is to provide affordable and accessible transportation to
+                everyone, while also creating job opportunities for drivers in the communities we serve.
               </p>
               <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
             </div>
@@ -87,7 +92,10 @@
           <div class="carousel-container">
             <div class="container">
               <h2 class="animate__animated animate__fadeInDown">Welcome to saWari</h2>
-              <p class="animate__animated animate__fadeInUp">With Sawari, passengers can easily book rides through our user-friendly app, track their driver's location in real-time, and pay securely with multiple payment options. Our drivers are carefully vetted and trained to provide a comfortable and safe ride experience for our passengers.</p>
+              <p class="animate__animated animate__fadeInUp">With Sawari, passengers can easily book rides through our
+                user-friendly app, track their driver's location in real-time, and pay securely with multiple payment
+                options. Our drivers are carefully vetted and trained to provide a comfortable and safe ride experience
+                for our passengers.</p>
               <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
             </div>
           </div>
@@ -98,7 +106,9 @@
           <div class="carousel-container">
             <div class="container">
               <h2 class="animate__animated animate__fadeInDown">Welcome to SaWari</h2>
-              <p class="animate__animated animate__fadeInUp">We're committed to providing exceptional customer service and continuously improving our platform to better serve our users. Founded in 2023 A.D., Sawari is headquartered in Tandi and currently operates in Chitwan District. 
+              <p class="animate__animated animate__fadeInUp">We're committed to providing exceptional customer service
+                and continuously improving our platform to better serve our users. Founded in 2023 A.D., Sawari is
+                headquartered in Tandi and currently operates in Chitwan District.
 
                 Thank you for considering Sawari for your transportation needs.</p>
               <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
@@ -106,7 +116,7 @@
           </div>
         </div>
       </div>
-      
+
 
       <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
         <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
@@ -119,48 +129,55 @@
     </div>
   </section><!-- End Hero -->
 
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container">
+  <!-- ======= About Section ======= -->
+  <section id="about" class="about">
+    <div class="container">
 
-        <div class="row content">
-          <div class="col-lg-6">
-            <h2>- SAWARI -</h2>
-            <h3>THE NEXT GENERATION RIDE HAILING PLATFORM.</h3>
-          </div>
-          <div class="col-lg-6 pt-4 pt-lg-0">
-            <p>
-              "Sawari is your go-to ride-hailing platform, connecting you with safe and reliable drivers at an affordable price. 
-              Our user-friendly app, carefully vetted drivers, and commitment to exceptional customer service make us the smart choice for your transportation needs. 
-              From short commutes to long trips, Sawari has got you covered. Book your ride today and experience the difference!"
-            </p>
-            <ul>
-              <li><i class="ri-check-double-line"></i> Advanced ride customization options (such as the ability to request a specific type of vehicle or driver)</li>
-              <li><i class="ri-check-double-line"></i> More payment options, including cashless payments and mobile wallets</li>
-              <li><i class="ri-check-double-line"></i> 24/7 customer services with dedicated support staff</li>
-              <li><i class="ri-check-double-line"></i> Accurate and consistent pricing for riders based on distance, time, and other factors</li>
-              <li><i class="ri-check-double-line"></i> Real-time ride tracking and notification</li>
-              <li><i class="ri-check-double-line"></i> In-app safety features, such as an SOS button and emergency contact integration.</li>
-            </ul>
-            <p class="fst-italic">
-              If you have any questions or would like to learn more about Sawari, please don't hesitate to contact us.
-              Thank you for considering Sawari for your transportation needs.
-            </p>
-          </div>
+      <div class="row content">
+        <div class="col-lg-6">
+          <h2>- SAWARI -</h2>
+          <h3>THE NEXT GENERATION RIDE HAILING PLATFORM.</h3>
         </div>
-
+        <div class="col-lg-6 pt-4 pt-lg-0">
+          <p>
+            "Sawari is your go-to ride-hailing platform, connecting you with safe and reliable drivers at an affordable
+            price.
+            Our user-friendly app, carefully vetted drivers, and commitment to exceptional customer service make us the
+            smart choice for your transportation needs.
+            From short commutes to long trips, Sawari has got you covered. Book your ride today and experience the
+            difference!"
+          </p>
+          <ul>
+            <li><i class="ri-check-double-line"></i> Advanced ride customization options (such as the ability to request
+              a specific type of vehicle or driver)</li>
+            <li><i class="ri-check-double-line"></i> More payment options, including cashless payments and mobile
+              wallets</li>
+            <li><i class="ri-check-double-line"></i> 24/7 customer services with dedicated support staff</li>
+            <li><i class="ri-check-double-line"></i> Accurate and consistent pricing for riders based on distance, time,
+              and other factors</li>
+            <li><i class="ri-check-double-line"></i> Real-time ride tracking and notification</li>
+            <li><i class="ri-check-double-line"></i> In-app safety features, such as an SOS button and emergency contact
+              integration.</li>
+          </ul>
+          <p class="fst-italic">
+            If you have any questions or would like to learn more about Sawari, please don't hesitate to contact us.
+            Thank you for considering Sawari for your transportation needs.
+          </p>
+        </div>
       </div>
-    </section><!-- End About Section -->
-    
-   
 
-     <!-- ======= Sawari img ======= -->
-    <img src="assets/img/ktm-outline.png">
+    </div>
+  </section><!-- End About Section -->
 
 
-   <!-- ======= Download section ======= -->
 
-<!-- ======= End Download Section ======= -->
+  <!-- ======= Sawari img ======= -->
+  <img src="assets/img/ktm-outline.png">
+
+
+  <!-- ======= Download section ======= -->
+
+  <!-- ======= End Download Section ======= -->
 
 
   <!-- ======= Footer ======= -->
@@ -226,7 +243,8 @@
     </div>
   </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -238,7 +256,7 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
-</main>
+  </main>
 </body>
 
 </html>
