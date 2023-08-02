@@ -1,5 +1,48 @@
+<?php
+require_once "script/db_connect.php";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+  // Get the auth_token from the cookie
+  $authToken = $_COOKIE['auth_token'];
+
+  // Query to retrieve user_id from users table using the token
+  $userQuery = "SELECT user_id FROM users WHERE token = '$authToken'";
+  $userResult = $link->query($userQuery);
+
+  if ($userResult->num_rows > 0) {
+    // User found in the database
+    $userRow = $userResult->fetch_assoc();
+    $user_id = $userRow['user_id'];
+
+    // Retrieve form data
+    $pickupLocation = $_POST['pickup_location'];
+    $dropoffLocation = $_POST['dropoff_location'];
+    $price = $_POST['price'];
+    $pickupDateTime = $_POST['pickup_datetime'];
+    $vehicleType = $_POST['vehicle_type'];
+
+    // Insert data into the ride_request table
+    $insertQuery = "INSERT INTO ride_requests (user_id, pickup_loc, dropoff_loc, price, ride_time, v_type, status)
+                        VALUES ('$user_id', '$pickupLocation', '$dropoffLocation', '$price', '$pickupDateTime', '$vehicleType', 'pending')";
+
+    if ($link->query($insertQuery) === TRUE) {
+      // Data inserted successfully
+      echo "Ride request submitted successfully!";
+    } else {
+      echo "Error: " . $insertQuery . "<br>" . $link->$error;
+    }
+  } else {
+    // User not found in the database
+    echo "Invalid authentication token. Please log in and try again.";
+  }
+
+  $link->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +54,9 @@
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -33,7 +78,7 @@
   border: 1px;
   border-radius: 5%;
   margin-top: 85px;">
-  <?php  include "forms/accountCheck.php"; ?>
+    <?php include "forms/accountCheck.php"; ?>
     <button class="btn btn-danger" onclick="myAccount.close()">close</button>
   </dialog>
   <!-- ======= Header ======= -->
@@ -52,9 +97,9 @@
           <li><a href="services.php">Services</a></li>
           <li><a href="contact.php">Contact</a></li>
           <?php if (isset($_COOKIE['auth_token'])) {
-        echo  '<li><a class="getstarted" style=" cursor:pointer;" onclick="myAccount.showModal()">My Account</a></li>';
-          } else{
-            echo  '<li><a href="register.php" class="getstarted" style=" cursor:pointer;">Login/Register</a></li>';
+            echo '<li><a class="getstarted" style=" cursor:pointer;" onclick="myAccount.showModal()">My Account</a></li>';
+          } else {
+            echo '<li><a href="register.php" class="getstarted" style=" cursor:pointer;">Login/Register</a></li>';
           } ?>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -63,107 +108,109 @@
     </div>
   </header><!-- End Header -->
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
+  <!-- ======= Breadcrumbs ======= -->
+  <section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
 
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>Book a Ride</h2>
-          <ol>
-            <li><a href="index.php">Home</a></li>
-            <li>Book a Ride</li>
-          </ol>
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Book a Ride</h2>
+        <ol>
+          <li><a href="index.php">Home</a></li>
+          <li>Book a Ride</li>
+        </ol>
+      </div>
+
+    </div>
+  </section><!-- End Breadcrumbs -->
+
+  <!-- Book Ride Section -->
+  <section id="book" class="book">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Book a Ride</h2>
+        <p>Enter your trip details to book a ride with Sawari</p>
+      </div>
+
+      <form class="book-form" method="post">
+
+        <div class="form-group">
+          <input type="text" name="pickup_location" placeholder="Pickup Location">
         </div>
 
-      </div>
-    </section><!-- End Breadcrumbs -->
+        <div class="form-group">
+          <input type="text" name="dropoff_location" placeholder="Dropoff Location">
+        </div>
+        <div class="form-group">
+          <input type="text" name="price" placeholder="Price">
+        </div>
 
-<!-- Book Ride Section -->
-<section id="book" class="book">
-  <div class="container">
+        <div class="form-group">
+          <input type="datetime-local" name="pickup_datetime" placeholder="Pickup Date/Time">
+        </div>
 
-    <div class="section-title">
-      <h2>Book a Ride</h2>
-      <p>Enter your trip details to book a ride with Sawari</p>
+        <div class="form-group">
+          <select name="vehicle_type">
+            <option>Select Vehicle Type</option>
+            <option>Two wheller</option>
+            <option>car</option>
+            <option>SUV</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" name="submit" class="book-btn">Book Now</button>
+        </div>
+
+      </form>
+
     </div>
-
-    <form class="book-form">
-
-      <div class="form-group">
-        <input type="text" placeholder="Pickup Location">
-      </div>
-
-      <div class="form-group">
-        <input type="text" placeholder="Dropoff Location">
-      </div>
-      
-      <div class="form-group">
-        <input type="datetime-local" placeholder="Pickup Date/Time">
-      </div>
-
-      <div class="form-group">
-        <select>
-          <option>Select Vehicle Type</option>
-          <option>Hatchback</option>
-          <option>Sedan</option>
-          <option>SUV</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <button class="book-btn">Book Now</button>
-      </div>
-
-    </form>
-
-  </div>
   </section>
-    <!-- End book -->
+  <!-- End book -->
 
 
-<!-- Book Style -->
-<style>
-.book {
-  padding: 60px 0;
-  background: #f5f5f5; 
-}
+  <!-- Book Style -->
+  <style>
+    .book {
+      padding: 60px 0;
+      background: #f5f5f5;
+    }
 
-.book-form {
-  background: #fff;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);  
-}
+    .book-form {
+      background: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-.book-form input,
-.book-form select {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 1px solid #ddd;
-  outline: none;
-}
+    .book-form input,
+    .book-form select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      outline: none;
+    }
 
-.book-btn {
-  width: 100%;
-  padding: 12px;
-  background: #007bff;
-  color: #fff;
-  border: 0;
-  outline: none;
-  cursor: pointer;
-  transition: 0.3s;
-}
+    .book-btn {
+      width: 100%;
+      padding: 12px;
+      background: #007bff;
+      color: #fff;
+      border: 0;
+      outline: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-.book-btn:hover {
-  background: #0062cc;
-}
+    .book-btn:hover {
+      background: #0062cc;
+    }
+  </style>
 
-</style>
 
-
-     <!-- ======= Footer ======= -->
+  <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="footer-top">
       <div class="container">
@@ -226,7 +273,8 @@
     </div>
   </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -238,7 +286,7 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
-</main>
+  </main>
 </body>
 
 </html>
