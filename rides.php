@@ -67,72 +67,113 @@ margin-top: 85px;">
     </header><!-- End Header -->
     <section id="about" class="about mt-4 mx-4">
         <h1 class="h1 text-center">Your Recent booking</h1>
-    <?php
-    // Retrieve user_id from users table using auth_token from the cookie
-    if (isset($_COOKIE['auth_token'])) {
-        $authToken = $_COOKIE['auth_token'];
-        $query = "SELECT user_id FROM users WHERE token = '$authToken'";
-        $result = $link->query($query);
+        <?php
+        // Retrieve user_id from users table using auth_token from the cookie
+        if (isset($_COOKIE['auth_token'])) {
+            $authToken = $_COOKIE['auth_token'];
+            $query = "SELECT user_id FROM users WHERE token = '$authToken'";
+            $result = $link->query($query);
 
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $user_id = $row['user_id'];
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $user_id = $row['user_id'];
 
-            // Fetch ride request data for the current user from ride_request table
-            $ride_query = "SELECT * FROM ride_requests WHERE user_id = $user_id ORDER BY request_id DESC LIMIT 10";
-            $ride_result = $link->query($ride_query);
+                // Fetch ride request data for the current user from ride_request table
+                $ride_query = "SELECT * FROM ride_requests WHERE user_id = $user_id ORDER BY request_id DESC LIMIT 10";
+                $ride_result = $link->query($ride_query);
 
-            if ($ride_result->num_rows > 0) {
-                // Loop through the retrieved data and display it
-                while ($ride_row = $ride_result->fetch_assoc()) {
-                    $pickup_location = $ride_row['pickup_loc'];
-                    $dropoff_location = $ride_row['dropoff_loc'];
-                    $ride_time = $ride_row['ride_time'];
-                    $vehicle_type = $ride_row['v_type'];
-                    $price = $ride_row['price'];
-                    $status = $ride_row['status'];
-                    ?>
-                    <div class="card border">
-                        <div class="card-body">
-                            <table class="table table-sm  table-borderless">
-                                <tbody>
-                                    <tr>
-                                        <td>Pickup location:</td>
-                                        <td><?php echo $pickup_location; ?></td>
-                                        <td>Dropoff Location:</td>
-                                        <td><?php echo $dropoff_location; ?></td>
-                                        <td>Ride Time:</td>
-                                        <td><?php echo $ride_time; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Vehicle type:</td>
-                                        <td><?php echo $vehicle_type; ?></td>
-                                        <td>Price:</td>
-                                        <td><?php echo $price; ?></td>
-                                        <td>Status:</td>
-                                        <td><?php echo $status; ?></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                if ($ride_result->num_rows > 0) {
+                    // Loop through the retrieved data and display it
+                    while ($ride_row = $ride_result->fetch_assoc()) {
+                        $request_id=$ride_row['request_id'];
+                        $pickup_location = $ride_row['pickup_loc'];
+                        $dropoff_location = $ride_row['dropoff_loc'];
+                        $ride_time = $ride_row['ride_time'];
+                        $vehicle_type = $ride_row['v_type'];
+                        $price = $ride_row['price'];
+                        $status = $ride_row['status'];
+                        ?>
+                        <div class="card border" data-request-id="<?php echo $request_id; ?>">
+                            <div class="card-body">
+                                <table class="table table-sm  table-borderless">
+                                    <tbody>
+                                        <tr>
+                                            <td>Pickup location:</td>
+                                            <td>
+                                                <?php echo $pickup_location; ?>
+                                            </td>
+                                            <td>Dropoff Location:</td>
+                                            <td>
+                                                <?php echo $dropoff_location; ?>
+                                            </td>
+                                            <td>Ride Time:</td>
+                                            <td>
+                                                <?php echo $ride_time; ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Vehicle type:</td>
+                                            <td>
+                                                <?php echo $vehicle_type; ?>
+                                            </td>
+                                            <td>Price:</td>
+                                            <td>
+                                                <?php echo $price; ?>
+                                            </td>
+                                            <td>Status:</td>
+                                            <td>
+                                                <?php echo $status; ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Finished riding or want to delete this request</td>
+                                            <td><button type="button" class="btn btn-danger" onclick="deleteRow(<?php echo $request_id; ?>)">Delete</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
-                <?php
+                        <?php
+                    }
+                } else {
+                    // No ride request data found for the current user
+                    echo "No ride request data found for the current user.";
                 }
             } else {
-                // No ride request data found for the current user
-                echo "No ride request data found for the current user.";
+                // Invalid authentication token
+                echo "Invalid authentication token. Please log in and try again.";
             }
         } else {
-            // Invalid authentication token
-            echo "Invalid authentication token. Please log in and try again.";
+            // Authentication token not found
+            echo "Authentication token not found. Please log in and try again.";
         }
-    } else {
-        // Authentication token not found
-        echo "Authentication token not found. Please log in and try again.";
-    }
-    ?>
-</section>
+        ?>
+    </section>
 
 </body>
+<script>
+    function deleteRow(request_id) {
+        console.log(request_id);
+        var confirmDelete = window.confirm("Are you sure you want to delete this request?");
+        if (confirmDelete) {
+            // Send an AJAX request to delete the row from the database
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "delete_request.php", true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // On successful deletion, remove the card from the page
+                    var card = document.querySelector(".card[data-request-id='" + request_id + "']");
+                    if (card) {
+                        card.remove();
+                    }
+                }
+                location.reload();
+            };
+            xhr.send("request_id=" + request_id);
+        }
+    }
+</script>
+
 
 </html>
