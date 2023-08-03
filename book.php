@@ -151,7 +151,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <div class="form-group">
           <select name="vehicle_type">
-            <option>Select Vehicle Type</option>
+            <option disabled selected>Select Vehicle Type</option>
             <option>Two wheller</option>
             <option>car</option>
             <option>SUV</option>
