@@ -152,9 +152,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <div class="form-group">
           <select name="vehicle_type">
             <option disabled selected>Select Vehicle Type</option>
-            <option>Two wheller</option>
+            <option>Bike</option>
             <option>car</option>
-            <option>SUV</option>
+            <option>TukTuk</option>
           </select>
         </div>
 
@@ -196,16 +196,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     .book-btn {
       width: 100%;
       padding: 12px;
-      background: #007bff;
+      background: #d9232d;
       color: #fff;
       border: 0;
       outline: none;
       cursor: pointer;
       transition: 0.3s;
-    }
-
-    .book-btn:hover {
-      background: #0062cc;
     }
   </style>
 
