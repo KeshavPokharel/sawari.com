@@ -77,8 +77,7 @@
       </div>
     </section><!-- End Breadcrumbs -->
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
     <style>
         .card {
             transition: transform 0.2s;
@@ -118,8 +117,7 @@
                     <img src="car.jpg" class="card-img-top" alt="Car Service">
                     <div class="card-body">
                         <h5 class="card-title">Car Service</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat nisi
-                            eu dui varius, at vestibulum massa iaculis.</p>
+                        <p class="card-text">Travel in comfort and style with Sawari's Car Services. Book a ride in our fleet of reliable and well-maintained cars. Our trained drivers ensure a safe and pleasant journey, while real-time tracking allows you to monitor your ride's progress. With transparent fare estimates and cashless payments, Sawari Car Services offers a convenient and trustworthy solution for all your transportation needs.</p>
                     </div>
                 </div>
             </div>
@@ -128,8 +126,7 @@
                     <img src="bike.jpg" class="card-img-top" alt="Bike Service">
                     <div class="card-body">
                         <h5 class="card-title">Bike Service</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat nisi
-                            eu dui varius, at vestibulum massa iaculis.</p>
+                        <p class="card-text">Enjoy quick and convenient rides with Sawari's bike services. Book a bike with ease, navigate through traffic effortlessly, and reach your destination swiftly. Our trained bike riders prioritize safety and provide a fast and economical travel option for short distances, making your city commute a breeze.</p>
                     </div>
                 </div>
             </div>
@@ -138,15 +135,14 @@
                     <img src="tuktuk.jpg" class="card-img-top" alt="Tuktuk Service">
                     <div class="card-body">
                         <h5 class="card-title">Tuktuk Service</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat nisi
-                            eu dui varius, at vestibulum massa iaculis.</p>
+                        <p class="card-text">Experience the charm of traditional transport with Sawari's Tuktuk services. Hop on our colorful three-wheeled vehicles and explore the city with a touch of local flavor. Tuktuks are perfect for navigating busy streets and narrow alleys, offering a unique and enjoyable ride experience while you soak in the sights and sounds of your surroundings.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <br>
+  <br>
 </body>
 
 
