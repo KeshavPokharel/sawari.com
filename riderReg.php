@@ -1,5 +1,7 @@
 <?php
 require_once "script/db_connect.php";
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
 // Function to generate a random filename
 function generateRandomFileName($file)
@@ -26,6 +28,8 @@ if (isset($_POST['submit'])) {
         $name = $_POST['name'];
         $address = $_POST['address'];
         $message = $_POST['message'];
+        $tel=$_POST['tel'];
+        $date=$_POST['date'];
 
         // File paths
         $uploadsDir = $_SERVER['DOCUMENT_ROOT'] . '/';
@@ -58,15 +62,16 @@ if (isset($_POST['submit'])) {
             move_uploaded_file($_FILES['insurance']['tmp_name'], $uploadsDir . $insurancePath);
         }
 
-        // Insert data into riders table
-        $insert_query = "INSERT INTO riders (user_id, full_name, address, message, cv_path, license_path, bluebook_path, insurance_path, state)
-                        VALUES ('$user_id', '$name', '$address', '$message', '$cvPath', '$licensePath', '$bluebookPath', '$insurancePath', 'pending')";
+     // Insert data into riders table
+$insert_query = "INSERT INTO riders (user_id, full_name, address, message, cv_path, license_path, bluebook_path, insurance_path, phonenumber, dateofbirth, `state`)
+VALUES ('$user_id', '$name', '$address', '$message', '$cvPath', '$licensePath', '$bluebookPath', '$insurancePath', '$tel', '$date', 'pending')";
+
 
         if ($link->query($insert_query) === TRUE) {
             // Data inserted successfully
             echo "Application submitted successfully!";
         } else {
-            echo "Error: " . $insert_query . "<br>" . $link->$error;
+            echo "Error: " . $insert_query . "<br>" . $link->error;
         }
     } else {
         // User not found in the database
@@ -185,6 +190,36 @@ margin-top: 85px;">
 
                                         <input type="text" name="address" class="form-control form-control-lg"
                                             placeholder="Enter your full address (House No., Street, Ward No., Municipality/VDC, District)" />
+
+                                    </div>
+                                </div>
+                                <hr class="mx-n3">
+
+                                <div class="row align-items-center py-3">
+                                    <div class="col-md-3 ps-5">
+
+                                        <h6 class="mb-0">Phone Number</h6>
+
+                                    </div>
+                                    <div class="col-md-9 pe-5">
+
+                                        <input type="tel" name="tel" class="form-control form-control-lg"
+                                            placeholder="Enter your number without country code as given: 9*********" />
+
+                                    </div>
+                                </div>
+                                <hr class="mx-n3">
+
+                                <div class="row align-items-center py-3">
+                                    <div class="col-md-3 ps-5">
+
+                                        <h6 class="mb-0">Date Of Birth</h6>
+
+                                    </div>
+                                    <div class="col-md-9 pe-5">
+
+                                        <input type="date" name="date" class="form-control form-control-lg"
+                                            placeholder="Enter your Date Of Birth in AD" />
 
                                     </div>
                                 </div>

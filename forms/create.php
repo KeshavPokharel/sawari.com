@@ -10,8 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fullname = $_POST["fullname"];
     $email = $_POST["email"];
     $password = $_POST["password"];
-    $cpassword = $_POST["cpassword"]; // Added this line to retrieve the value of 'cpassword'
-
+    $cpassword = $_POST["cpassword"]; 
     // Check if 'cpassword' is empty or not provided
     if (empty($cpassword)) {
         $errors[] = "Confirm password field is missing.";
@@ -59,3 +58,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
+?>

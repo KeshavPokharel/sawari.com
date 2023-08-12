@@ -130,9 +130,25 @@ margin-top: 85px;">
                                                 <?php echo $status; ?>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>Finished riding or want to delete this request</td>
-                                            <td><button type="button" class="btn btn-danger" onclick="deleteRow(<?php echo $request_id; ?>)">Delete</button></td>
+                                        <tr><td colspan="6" class="text-center">
+                                            <?php 
+                                            if($status=='pending'){
+                                                echo '<p class="text-warning">Your request is still pending</p>';
+                                            }
+                                            
+                                            if($status=='accepted'){
+                                                echo '<p class="text-success">Your request has been accepted , happy ride</p>';
+                                            }
+                                            
+                                            if($status=='rejected'){
+                                                echo '<p class="text-warning">Sorry , your request has been rejected</p>';
+                                            }
+                                            
+                                            ?>
+                                             </td></tr>
+                                             <tr>
+                                            <td>Finished riding or want to delete this request
+                                            <button type="button" class="btn btn-danger" onclick="deleteRow(<?php echo $request_id; ?>)">Delete</button></td>
                                         </tr>
                                     </tbody>
                                 </table>

@@ -107,8 +107,13 @@ margin-top: 85px;">
 
             <div class="form-outline mb-3">
               <label class="form-label" for="password">Password</label>
+              <div class="input-group">
               <input type="password" id="password" name="password" class="form-control form-control-lg" required
                 placeholder="Password" />
+                <button class="btn btn-outline-secondary" type="button" id="showPasswordButton">
+                            <i class="bi bi-eye"></i>
+                          </button>
+                          </div>
             </div>
 
 
@@ -243,6 +248,39 @@ margin-top: 85px;">
             $('#errorContainer').text('An error occurred.');
           }
         });
+      });
+    });
+  </script>
+   <script>
+    $(document).ready(function () {
+      // Show/hide password for the 'password' field
+      $('#showPasswordButton').click(function () {
+        var passwordInput = $('#password');
+        var passwordFieldType = passwordInput.attr('type');
+
+        // Toggle password visibility
+        if (passwordFieldType === 'password') {
+          passwordInput.attr('type', 'text');
+          $(this).find('i').removeClass('bi-eye').addClass('bi-eye-slash');
+        } else {
+          passwordInput.attr('type', 'password');
+          $(this).find('i').removeClass('bi-eye-slash').addClass('bi-eye');
+        }
+      });
+
+      // Show/hide password for the 'cpassword' field
+      $('#showCPasswordButton').click(function () {
+        var cpasswordInput = $('#cpassword');
+        var cpasswordFieldType = cpasswordInput.attr('type');
+
+        // Toggle password visibility
+        if (cpasswordFieldType === 'password') {
+          cpasswordInput.attr('type', 'text');
+          $(this).find('i').removeClass('bi-eye').addClass('bi-eye-slash');
+        } else {
+          cpasswordInput.attr('type', 'password');
+          $(this).find('i').removeClass('bi-eye-slash').addClass('bi-eye');
+        }
       });
     });
   </script>
