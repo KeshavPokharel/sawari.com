@@ -30,7 +30,7 @@
 
 </head>
 
-<body>
+<body class="myAccountBody">
     <dialog id="myAccount" style=" margin-right: 7.5%;
 width: 141px;
 border: 1px;
