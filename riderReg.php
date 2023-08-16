@@ -290,14 +290,14 @@ margin-top: 85px;">
                                     </div>
                                     <div class="col-md-3 ps-5">
 
-                                        <h6 class="mb-0">Upload Insurence </h6>
+                                        <h6 class="mb-0">Upload Insurance </h6>
 
                                     </div>
                                     <div class="col-md-9 pe-5">
 
                                         <input class="form-control form-control-lg" name="insurance" required
                                             id="formFileLg" type="file" />
-                                        <div class="small text-muted mt-2">Upload your scanned copy of the insurence
+                                        <div class="small text-muted mt-2">Upload your scanned copy of the insurance
                                             copy
                                             with
                                             your name
