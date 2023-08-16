@@ -72,7 +72,8 @@ margin-top: 85px;">
     </header><!-- End Header -->
 
           <!-- Profile Section -->
-          <div class="container emp-profile">
+          <div class="container mt-5 pt-5">
+          <div class="container mt-5 pt-5 emp-profile">
             <form method="post">
                 <div class="row">
                     <div class="col-md-4">
@@ -218,6 +219,7 @@ margin-top: 85px;">
                     </div>
                 </div>
             </form>           
+        </div>
         </div>
           <!-- End Profile Section -->
 
