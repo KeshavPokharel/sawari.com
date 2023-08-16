@@ -22,4 +22,5 @@
     echo '<ul style="list-style-type: none;  cursor:pointer;"><li><a href="register.php">Login</a></li>
                 <li><a href="registration.php" class="getstarted">Register</a></li></ul>';
 }
+
 ?>

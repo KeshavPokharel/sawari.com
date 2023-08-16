@@ -70,6 +70,14 @@ $result = $link->query($query);
 <link href="assets/css/style.css" rel="stylesheet">
 
 <body>
+<dialog id="myAccount" style=" margin-right: 7.5%;
+  width: 141px;
+  border: 1px;
+  border-radius: 5%;
+  margin-top: 85px;">
+    <?php include "forms/accountCheck.php"; ?>
+    <button class="btn btn-danger" onclick="myAccount.close()">close</button>
+  </dialog>
     <header id="header" class="fixed-top d-flex align-items-center">
         <div class="container d-flex align-items-center">
 
