@@ -75,7 +75,8 @@ $result = $link->query($query);
   border: 1px;
   border-radius: 5%;
   margin-top: 85px;">
-    <?php include "forms/accountCheck.php"; ?>
+    <?php   echo '<ul style="list-style-type: none;  cursor:pointer;"><li><a href="myaccount.php">Account</a></li>
+                <li><a href="forms\logout.php" class="getstarted">Log Out</a></li>'; ?>
     <button class="btn btn-danger" onclick="myAccount.close()">close</button>
   </dialog>
     <header id="header" class="fixed-top d-flex align-items-center">
