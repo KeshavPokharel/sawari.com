@@ -224,13 +224,7 @@ margin-top: 85px;">
           <!-- End Profile Section -->
 
 
-    <!-- Rider Registration -->
-    <section id="about" class="about">
-        <div class="text-center text-lg-start mt-2 pt-2 login-cont">
-            <p class="small fw-bold mt-2 pt-1 mb-0">Are you a
-                rider? <a href="riderReg.php" class="link-danger">Rider Registration</a></p>
-        </div>
-            <!-- Rider REgistration End -->
+
  <!-- ======= Footer ======= -->
  <footer id="footer">
     <div class="footer-top">

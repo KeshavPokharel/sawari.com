@@ -15,7 +15,7 @@
         if ($result->num_rows > 0) {
             // User is registered as a rider
             
-            echo '<li><a href="rideRequest.php" class="getstarted">Ride Request</a></li></ul>';
+            echo '<li><a href="rideRequest.php" class="getstarted">ReqView</a></li></ul>';
         }
     }
 } else {
