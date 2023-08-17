@@ -69,7 +69,16 @@ VALUES ('$user_id', '$name', '$address', '$message', '$cvPath', '$licensePath', 
 
         if ($link->query($insert_query) === TRUE) {
             // Data inserted successfully
-            echo "Application submitted successfully!";
+            echo '<div class="container h-100 d-flex align-items-center justify-content-center">
+                <div class="card">
+                    <div class="class-body text-center">
+                        <br>
+                      <p class="p">  Your Form is successfully subbmited and being reviewed</p>
+                       <p class="p"> click ok , you will be rediret to index page</p><br>
+                        <a href="index.php"><button class="btn btn-lg btn-danger">OK</button></a>
+                    </div>
+                </div>
+            </div>';
         } else {
             echo "Error: " . $insert_query . "<br>" . $link->error;
         }
@@ -250,7 +259,7 @@ margin-top: 85px;">
                                     </div>
                                     <div class="col-md-9 pe-5">
 
-                                        <input class="form-control form-control-lg" name="cv" required id="formFileLg"
+                                        <input class="form-control form-control-lg" accept="application/pdf" name="cv" required id="formFileLg"
                                             type="file" />
                                         <div class="small text-muted mt-2">Upload your CV/Resume or any other relevant
                                             file.
@@ -265,7 +274,7 @@ margin-top: 85px;">
                                     </div>
                                     <div class="col-md-9 pe-5">
 
-                                        <input class="form-control form-control-lg" name="license" required
+                                        <input class="form-control form-control-lg" accept="image/*" name="license" required
                                             id="formFileLg" type="file" />
                                         <div class="small text-muted mt-2">Upload your scanned copy of your driving
                                             license
@@ -280,7 +289,7 @@ margin-top: 85px;">
                                     </div>
                                     <div class="col-md-9 pe-5">
 
-                                        <input class="form-control form-control-lg" name="bluebook" required
+                                        <input class="form-control form-control-lg" accept="image/*" name="bluebook" required
                                             id="formFileLg" type="file" />
                                         <div class="small text-muted mt-2">Upload your scanned copy of the bluebook with
                                             your name
@@ -295,7 +304,7 @@ margin-top: 85px;">
                                     </div>
                                     <div class="col-md-9 pe-5">
 
-                                        <input class="form-control form-control-lg" name="insurance" required
+                                        <input class="form-control form-control-lg" accept="image/*" name="insurance" required
                                             id="formFileLg" type="file" />
                                         <div class="small text-muted mt-2">Upload your scanned copy of the insurance
                                             copy

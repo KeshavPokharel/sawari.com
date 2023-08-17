@@ -27,7 +27,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($link->query($insertQuery) === TRUE) {
       // Data inserted successfully
-      echo "Ride request submitted successfully!";
+      echo '<div class="container h-100 d-flex align-items-center justify-content-center">
+                <div class="card">
+                    <div class="class-body text-center">
+                        <br>
+                      <p class="p">  Your request  has been  successfully subbmited and being reviewed</p>
+                      
+                      <p class="p"> click OK , you will be rediret to index page</p><br>
+                      <p class="p"> Or you can book again</p><br>
+                        <a href="index.php"><button class="btn btn-lg btn-danger">OK</button></a>
+                        <a href="book.php"><button class="btn btn-lg btn-danger">Request again</button></a>
+                    </div>
+                </div>
+            </div>';
     } else {
       echo "Error: " . $insertQuery . "<br>" . $link->$error;
     }
@@ -69,6 +81,40 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
   <!-- Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+    .book {
+      padding: 60px 0;
+      background: #f5f5f5;
+    }
+
+    .book-form {
+      background: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .book-form input,
+    .book-form select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      outline: none;
+    }
+
+    .book-btn {
+      width: 100%;
+      padding: 12px;
+      background: #d9232d;
+      color: #fff;
+      border: 0;
+      outline: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+  </style>
 
 </head>
 
@@ -139,22 +185,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <form class="book-form" method="post">
 
         <div class="form-group">
-          <input type="text" name="pickup_location" placeholder="Pickup Location">
+          <input type="text" required name="pickup_location" placeholder="Pickup Location">
         </div>
 
         <div class="form-group">
-          <input type="text" name="dropoff_location" placeholder="Dropoff Location">
+          <input type="text" required name="dropoff_location" placeholder="Dropoff Location">
         </div>
         <div class="form-group">
-          <input type="text" name="price" placeholder="Price">
-        </div>
-
-        <div class="form-group">
-          <input type="datetime-local" name="pickup_datetime" placeholder="Pickup Date/Time">
+          <input type="text" required name="price" placeholder="Price">
         </div>
 
         <div class="form-group">
-          <select name="vehicle_type">
+          <input type="datetime-local" required name="pickup_datetime" placeholder="Pickup Date/Time">
+        </div>
+
+        <div class="form-group">
+          <select name="vehicle_type" required >
             <option disabled selected>Select Vehicle Type</option>
             <option>Bike</option>
             <option>car</option>
@@ -174,41 +220,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
   <!-- Book Style -->
-  <style>
-    .book {
-      padding: 60px 0;
-      background: #f5f5f5;
-    }
-
-    .book-form {
-      background: #fff;
-      padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .book-form input,
-    .book-form select {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      box-sizing: border-box;
-      border: 1px solid #ddd;
-      outline: none;
-    }
-
-    .book-btn {
-      width: 100%;
-      padding: 12px;
-      background: #d9232d;
-      color: #fff;
-      border: 0;
-      outline: none;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-  </style>
-
+  
 
   <!-- ======= Footer ======= -->
   <footer id="footer">

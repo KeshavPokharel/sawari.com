@@ -1,26 +1,32 @@
 <?php
 require_once "script/db_connect.php";
 
+
 // Function to get the full name of the rider from the users table using the user_id
 function getRiderFullName($userId, $link)
 {
-    $query = "SELECT fullname FROM users WHERE user_id = $userId";
+    $authToken = $_COOKIE['auth_token'];
+    $query = "SELECT rider_id FROM riders WHERE user_id = (SELECT user_id FROM users WHERE token = '$authToken') LIMIT 1";
     $result = $link->query($query);
     if ($result && $result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        return $row['fullname'];
+        $row = $result->fetch_assoc(); 
+        return $row['rider_id']; // Return rider_id instead of $riderId
     } else {
         return "Unknown Rider";
     }
 }
+
 
 // Handle form submission
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["request_id"]) && isset($_POST["status"])) {
     $requestId = $_POST["request_id"];
     $status = $_POST["status"];
 
+    // Fetch the rider's ID using the function
+    $riderId = getRiderFullName($userId, $link);
+
     // Update the status in the database
-    $update_query = "UPDATE ride_requests SET status = '$status' WHERE request_id = $requestId";
+    $update_query = "UPDATE ride_requests SET status = '$status', rider_id='$riderId' WHERE request_id = $requestId";
 
     if ($link->query($update_query) === TRUE) {
         // Update successful
@@ -128,6 +134,7 @@ $result = $link->query($query);
             <tbody>
                 <?php
                 while ($row = $result->fetch_assoc()) {
+                    $id=$row['rider_id'];
                     echo '<tr>';
                     echo '<td>' . getRiderFullName($row['user_id'], $link) . '</td>';
                     echo '<td>' . $row['pickup_loc'] . '</td>';
@@ -150,6 +157,8 @@ $result = $link->query($query);
             </tbody>
         </table>
     </section>
+    
 </body>
 
 </html>
+?>
