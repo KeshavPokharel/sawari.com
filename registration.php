@@ -160,7 +160,7 @@
                     <div id="errorContainer"></div>
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
 
-                      <input type="submit" class="btn btn-primary btn-lg" id="signup" name="Register" value="Register">
+                      <input type="submit" class="btn btn-danger btn-lg" id="signup" name="Register" value="Register">
                     </div>
 
                   </form>
