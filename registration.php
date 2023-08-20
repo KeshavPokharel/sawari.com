@@ -103,6 +103,8 @@
 
                   <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 
+
+
                   <form class="mx-1 mx-md-4" action="forms/create.php" method="post">
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
@@ -112,6 +114,16 @@
                       </div>
                     </div>
 
+              <!-- new -->
+              <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                  <label class="form-label" for="username">Username</label>
+                  <input type="text" id="username" name="username" class="form-control" />
+                </div>
+              </div>
+              <!-- new end -->
+
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
@@ -119,6 +131,40 @@
                         <input type="email" id="email" name="email" class="form-control" />
                       </div>
                     </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fas fa-phone fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                  <label class="form-label" for="phone">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" class="form-control" />
+                </div>
+              </div>
+
+                 <!-- new -->
+
+                 <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fas fa-venus-mars fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                  <label class="form-label">Gender</label>
+                  <select id="gender" name="gender" class="form-select">
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fas fa-calendar fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                  <label class="form-label" for="dob">Date of Birth</label>
+                  <input type="date" id="dob" name="dob" class="form-control" />
+                </div>
+              </div>
+
+
+                    <!-- new end -->
 
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
@@ -136,7 +182,7 @@
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <label class="form-label" for="cpassword">Repeat password</label>
+                        <label class="form-label" for="cpassword">Confirm password</label>
                         <div class="input-group">
                           <input type="password" id="cpassword" name="cpassword" class="form-control" />
                           <button class="btn btn-outline-secondary" type="button" id="showCPasswordButton">
@@ -145,6 +191,18 @@
                         </div>
                       </div>
                     </div>
+
+
+                    <div class="d-flex flex-column align-items-center mb-4">
+                <div class="profile-img">
+                </div>
+                <div class="custom-file" >
+                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                <label class="custom-file-label" for="profilePicture">Choose Profile Picture</label>
+                  <input type="file" class="custom-file-input" id="profilePicture" name="profilePicture">
+                </div>
+              </div>
+
 
                     <div class="form-check d-flex justify-content-center mb-5">
                       <input class="form-check-input me-2" type="checkbox" value="" id="termsCheckbox" />
