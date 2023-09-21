@@ -24,9 +24,32 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.min.css"rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
     crossorigin="anonymous"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/cropperjs/dist/cropper.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/cropperjs/dist/cropper.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+        /* Circular Crop Mask */
+        .cropper-view-box {
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .cropper-face {
+            border-radius: 50%;
+        }
+        .imgpp{
+          width: 300px;
+          height: 300px;
+          max-width: 100%;
+        }
+        .profile-img{
+          width: 300px;
+          height: 300px;
+        }
+    </style>
   <!-- Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
   <style>
@@ -105,7 +128,7 @@
 
 
 
-                  <form class="mx-1 mx-md-4" action="forms/create.php" method="post">
+                  <form class="mx-1 mx-md-4" action="forms/create.php" method="post" enctype="multipart/form-data">
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
@@ -147,7 +170,7 @@
                 <div class="form-outline flex-fill mb-0">
                   <label class="form-label">Gender</label>
                   <select id="gender" name="gender" class="form-select">
-                    <option value="">Select Gender</option>
+                    <option value="" disabled>Select Gender</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="other">Other</option>
@@ -159,7 +182,7 @@
                 <i class="fas fa-calendar fa-lg me-3 fa-fw"></i>
                 <div class="form-outline flex-fill mb-0">
                   <label class="form-label" for="dob">Date of Birth</label>
-                  <input type="date" id="dob" name="dob" class="form-control" />
+                  <input type="date" id="dob"  name="dob" class="form-control" />
                 </div>
               </div>
 
@@ -193,15 +216,16 @@
                     </div>
 
 
-                    <div class="d-flex flex-column align-items-center mb-4">
-                <div class="profile-img">
-                </div>
-                <div class="custom-file" >
-                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                <label class="custom-file-label" for="profilePicture">Choose Profile Picture</label>
-                  <input type="file" class="custom-file-input" id="profilePicture" name="profilePicture">
-                </div>
-              </div>
+                     <div class="d-flex flex-column align-items-center mb-4">
+                        <div class="profile-img">
+                            <div class="custom-file">
+                                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                <label class="custom-file-label" for="profilePicture">Choose Profile Picture</label>
+                                <input type="file" class="custom-file-input" id="profilePicture" name="profilePicture">
+                                <img src="" id="image" class="imgpp" alt="Profile Picture">
+                            </div>
+                        </div>
+                    </div>
 
 
                     <div class="form-check d-flex justify-content-center mb-5">
@@ -217,7 +241,7 @@
                       </div>
                     <div id="errorContainer"></div>
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-
+                    
                       <input type="submit" class="btn btn-danger btn-lg" id="signup" name="Register" value="Register">
                     </div>
 
@@ -379,7 +403,38 @@
         }
       });
     });
+  
   </script>
+  
+      <script>
+        
+        var cropper;
+      
+        $('#profilePicture').on('change', function (e) {
+            var fileInput = e.target;
+            var file = fileInput.files[0];
+            console.log('File selected:', file);
+
+            // Check if a file was selected
+            if (file) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#image').attr('src', e.target.result);
+
+                    // Initialize Cropper.js
+                    cropper = new Cropper(document.getElementById('image'), {
+                        aspectRatio: 1, // Set the aspect ratio to 1:1 (for a square image)
+                        viewMode: 2,    // Set the view mode to fit within the container
+                    });
+                   
+                };
+
+                reader.readAsDataURL(file);
+            }
+        });
+        
+    </script>
 
   </main>
 </body>
