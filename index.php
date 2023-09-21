@@ -87,6 +87,11 @@
                 with safe and reliable drivers. Our mission is to provide affordable and accessible transportation to
                 everyone, while also creating job opportunities for drivers in the communities we serve.
               </p>
+             <?php
+             if (isset($_COOKIE['auth_token'])) {
+              echo ' <a href="book.php" class="btn-get-started animate__animated animate__fadeInUp scrollto">Grab A Ride</a>';
+             } 
+             ?>
               <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
             </div>
           </div>
@@ -101,6 +106,11 @@
                 user-friendly app, track their driver's location in real-time, and pay securely with multiple payment
                 options. Our drivers are carefully vetted and trained to provide a comfortable and safe ride experience
                 for our passengers.</p>
+                <?php
+             if (isset($_COOKIE['auth_token'])) {
+              echo ' <a href="book.php" class="btn-get-started animate__animated animate__fadeInUp scrollto">Grab A Ride</a>';
+             } 
+             ?>
               <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
             </div>
           </div>
@@ -114,8 +124,12 @@
               <p class="animate__animated animate__fadeInUp">We're committed to providing exceptional customer service
                 and continuously improving our platform to better serve our users. Founded in 2023 A.D., Sawari is
                 headquartered in Tandi and currently operates in Chitwan District.
-
                 Thank you for considering Sawari for your transportation needs.</p>
+                <?php
+             if (isset($_COOKIE['auth_token'])) {
+              echo ' <a href="book.php" class="btn-get-started animate__animated animate__fadeInUp scrollto">Grab A Ride</a>';
+             } 
+             ?>
               <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
             </div>
           </div>

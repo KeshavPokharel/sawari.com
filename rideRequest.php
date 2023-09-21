@@ -116,10 +116,12 @@ $result = $link->query($query);
         </div>
     </header><!-- End Header -->
     <hr class="hr hr-blurry" />
+
     <header>
-        <h1>Pending Ride Requests</h1>
+        <h1 style="padding-top: 25px;" class="mt-5 text-center">Pending Ride Requests</h1>
     </header>
-    <section id="about" class="about mt-5 table-responsive">
+
+    <section id="about" class="about  table-responsive">
         <table class="table">
             <thead>
                 <tr>

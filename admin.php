@@ -1,4 +1,7 @@
 <?php
+include 'forms/loginCheck.php';
+?>
+<?php
 session_start();
 
 // If admin is not logged in, redirect to the login page

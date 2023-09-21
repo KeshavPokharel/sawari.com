@@ -128,7 +128,7 @@
 
 
 
-                  <form class="mx-1 mx-md-4" action="forms/create.php" method="post" enctype="multipart/form-data">
+                  <form class="mx-1 mx-md-4" action="forms/create.php" method="post" id="myForm" enctype="multipart/form-data">
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
@@ -216,16 +216,8 @@
                     </div>
 
 
-                     <div class="d-flex flex-column align-items-center mb-4">
-                        <div class="profile-img">
-                            <div class="custom-file">
-                                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                <label class="custom-file-label" for="profilePicture">Choose Profile Picture</label>
-                                <input type="file" class="custom-file-input" id="profilePicture" name="profilePicture">
-                                <img src="" id="image" class="imgpp" alt="Profile Picture">
-                            </div>
-                        </div>
-                    </div>
+                 
+                   
 
 
                     <div class="form-check d-flex justify-content-center mb-5">
@@ -405,37 +397,8 @@
     });
   
   </script>
-  
-      <script>
-        
-        var cropper;
-      
-        $('#profilePicture').on('change', function (e) {
-            var fileInput = e.target;
-            var file = fileInput.files[0];
-            console.log('File selected:', file);
 
-            // Check if a file was selected
-            if (file) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('#image').attr('src', e.target.result);
-
-                    // Initialize Cropper.js
-                    cropper = new Cropper(document.getElementById('image'), {
-                        aspectRatio: 1, // Set the aspect ratio to 1:1 (for a square image)
-                        viewMode: 2,    // Set the view mode to fit within the container
-                    });
-                   
-                };
-
-                reader.readAsDataURL(file);
-            }
-        });
-        
-    </script>
-
+ 
   </main>
 </body>
 

@@ -1,3 +1,6 @@
+<?php
+include 'forms/loginCheck.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 

@@ -1,4 +1,7 @@
 <?php
+include 'forms/loginCheck.php';
+?>
+<?php
 require_once "script/db_connect.php";
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
