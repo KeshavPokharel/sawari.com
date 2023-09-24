@@ -133,7 +133,7 @@
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
                         <label class="form-label" for="fullname">Full Name</label>
-                        <input type="text" id="fullname" name="fullname" class="form-control" />
+                        <input type="text" required id="fullname" name="fullname" class="form-control" />
                       </div>
                     </div>
 
@@ -142,7 +142,7 @@
                 <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                 <div class="form-outline flex-fill mb-0">
                   <label class="form-label" for="username">Username</label>
-                  <input type="text" id="username" name="username" class="form-control" />
+                  <input type="text" id="username" required name="username" class="form-control" />
                 </div>
               </div>
               <!-- new end -->
@@ -151,7 +151,7 @@
                       <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
                         <label class="form-label" for="email">Email</label>
-                        <input type="email" id="email" name="email" class="form-control" />
+                        <input type="email" required id="email" name="email" class="form-control" />
                       </div>
                     </div>
 
@@ -159,7 +159,7 @@
                 <i class="fas fa-phone fa-lg me-3 fa-fw"></i>
                 <div class="form-outline flex-fill mb-0">
                   <label class="form-label" for="phone">Phone Number</label>
-                  <input type="tel" id="phone" name="phone" class="form-control" />
+                  <input type="tel" required id="phone" name="phone" class="form-control" />
                 </div>
               </div>
 
@@ -169,7 +169,7 @@
                 <i class="fas fa-venus-mars fa-lg me-3 fa-fw"></i>
                 <div class="form-outline flex-fill mb-0">
                   <label class="form-label">Gender</label>
-                  <select id="gender" name="gender" class="form-select">
+                  <select id="gender" required name="gender" class="form-select">
                     <option value="" disabled>Select Gender</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
@@ -182,7 +182,7 @@
                 <i class="fas fa-calendar fa-lg me-3 fa-fw"></i>
                 <div class="form-outline flex-fill mb-0">
                   <label class="form-label" for="dob">Date of Birth</label>
-                  <input type="date" id="dob"  name="dob" class="form-control" />
+                  <input type="date" required id="dob"  name="dob" class="form-control" />
                 </div>
               </div>
 
@@ -194,7 +194,7 @@
                       <div class="form-outline flex-fill mb-0">
                         <label class="form-label" for="password">Password</label>
                         <div class="input-group">
-                          <input type="password" id="password" name="password" class="form-control" />
+                          <input type="password" required id="password" name="password" class="form-control" />
                           <button class="btn btn-outline-secondary" type="button" id="showPasswordButton">
                             <i class="bi bi-eye"></i>
                           </button>
@@ -207,7 +207,7 @@
                       <div class="form-outline flex-fill mb-0">
                         <label class="form-label" for="cpassword">Confirm password</label>
                         <div class="input-group">
-                          <input type="password" id="cpassword" name="cpassword" class="form-control" />
+                          <input type="password" required id="cpassword" name="cpassword" class="form-control" />
                           <button class="btn btn-outline-secondary" type="button" id="showCPasswordButton">
                             <i class="bi bi-eye"></i>
                           </button>
