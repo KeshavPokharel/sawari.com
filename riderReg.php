@@ -33,6 +33,8 @@ if (isset($_POST['submit'])) {
         $message = $_POST['message'];
         $tel=$_POST['tel'];
         $date=$_POST['date'];
+        $gender = $_POST['gender'];
+        $vehicleType = $_POST['vehicleType'];
 
         // File paths
         $uploadsDir = $_SERVER['DOCUMENT_ROOT'] . '/';
@@ -66,8 +68,9 @@ if (isset($_POST['submit'])) {
         }
 
      // Insert data into riders table
-$insert_query = "INSERT INTO riders (user_id, full_name, address, message, cv_path, license_path, bluebook_path, insurance_path, phonenumber, dateofbirth, `state`)
-VALUES ('$user_id', '$name', '$address', '$message', '$cvPath', '$licensePath', '$bluebookPath', '$insurancePath', '$tel', '$date', 'pending')";
+     $insert_query = "INSERT INTO riders (user_id, full_name, address, message, cv_path, license_path, bluebook_path, insurance_path, phonenumber, dateofbirth, gender, vehicle, `state`)
+     VALUES ('$user_id', '$name', '$address', '$message', '$cvPath', '$licensePath', '$bluebookPath', '$insurancePath', '$tel', '$date', '$gender', '$vehicleType', 'pending')";
+     
 
 
         if ($link->query($insert_query) === TRUE) {
@@ -235,7 +238,45 @@ margin-top: 85px;">
 
                                     </div>
                                 </div>
+                                <hr class="mx-n3">
 
+                                <div class="row align-items-center py-3">
+                                    <div class="col-md-3 ps-5">
+
+                                        <h6 class="mb-0">Gender</h6>
+
+                                    </div>
+                                    <div class="col-md-9 pe-5">
+
+                                    <select class="form-control" id="gender" name="gender" required>
+                                    <option value="" disabled selected>Select Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+
+                                    </div>
+                                </div>
+                                <hr class="mx-n3">
+
+                                <div class="row align-items-center py-3">
+                                    <div class="col-md-3 ps-5">
+
+                                        <h6 class="mb-0">Gender</h6>
+
+                                    </div>
+                                    <div class="col-md-9 pe-5">
+
+                                <select class="form-control" id="vehicleType" name="vehicleType" required>
+                                    <option value="" disabled selected>Select vehile type</option>
+                                    <option value="car">Car</option>
+                                    <option value="bike">Bike</option>
+                                    <option value="scooter">Scooter</option>
+                                    <option value="tuktuk">Tuktuk</option>
+                                </select>
+
+                                    </div>
+                                </div>
                                 <hr class="mx-n3">
 
                                 <div class="row align-items-center py-3">

@@ -7,7 +7,6 @@ ini_set('error_log', 'error.log');
 $errors = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  
     // Validate and sanitize each input field
     $fullname = isset($_POST["fullname"]) ? $_POST["fullname"] : "";
     $email = isset($_POST["email"]) ? $_POST["email"] : "";
@@ -17,14 +16,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = isset($_POST["phone"]) ? $_POST["phone"] : "";
     $password = isset($_POST["password"]) ? $_POST["password"] : "";
     $cpassword = isset($_POST["cpassword"]) ? $_POST["cpassword"] : "";
-    
+
     // Check if 'cpassword' is empty or not provided
     if (empty($cpassword)) {
         $errors[] = "Confirm password field is missing.";
     } elseif ($password !== $cpassword) {
         $errors[] = "Passwords do not match.";
     }
-    
+
     // Validate Username
     if (strlen($username) < 4 || strlen($username) > 20) {
         $errors[] = "Username must be between 4 and 20 characters long.";
@@ -41,24 +40,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors[] = "Invalid phone number. It should be 10 digits.";
     }
 
-    // Perform database insertion
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-    $token = bin2hex(random_bytes(32));
-    
-    // Adjust the SQL query to exclude the 'pp_path' column
-    $sql = "INSERT INTO users (fullname, email, password, token, date, username, phone, gender, dob) 
-            VALUES ('$fullname', '$email', '$hashedPassword', '$token', current_timestamp(), '$username', '$phone', '$gender', '$dob')";
-    
-    $result = mysqli_query($link, $sql);
-    
-    if ($result === false) {
-        $errors[] = "Error executing query: " . mysqli_error($link);
-    } else {
-        if (mysqli_affected_rows($link) > 0) {
-            echo json_encode(['success' => 'User created successfully']);
-            exit;
+    // Check if the username already exists in the database
+    $existingUsernameQuery = "SELECT * FROM users WHERE username = '$username'";
+    $existingUsernameResult = mysqli_query($link, $existingUsernameQuery);
+    if (mysqli_num_rows($existingUsernameResult) > 0) {
+        $errors[] = "Username already exists.";
+    }
+
+    // Check if the email already exists in the database
+    $existingEmailQuery = "SELECT * FROM users WHERE email = '$email'";
+    $existingEmailResult = mysqli_query($link, $existingEmailQuery);
+    if (mysqli_num_rows($existingEmailResult) > 0) {
+        $errors[] = "Email already exists.";
+    }
+     // Validate the password
+     if (!preg_match('/^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/', $password)) {
+        $errors[] = "Password must have at least one capital letter, one special character, and be at least 8 characters long.";
+    }
+    if (empty($errors)) {
+        // Perform database insertion
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $token = bin2hex(random_bytes(32));
+
+        // Adjust the SQL query to exclude the 'pp_path' column
+        $sql = "INSERT INTO users (fullname, email, password, token, date, username, phone, gender, dob) 
+                VALUES ('$fullname', '$email', '$hashedPassword', '$token', current_timestamp(), '$username', '$phone', '$gender', '$dob')";
+
+        $result = mysqli_query($link, $sql);
+
+        if ($result === false) {
+            $errors[] = "Error executing query: " . mysqli_error($link);
         } else {
-            $errors[] = "No rows were affected.";
+            if (mysqli_affected_rows($link) > 0) {
+                echo json_encode(['success' => 'User created successfully']);
+                exit;
+            } else {
+                $errors[] = "No rows were affected.";
+            }
         }
     }
 }

@@ -36,7 +36,9 @@
 <body>
   <dialog id="myAccount">
     <?php include "forms/accountCheck.php"; ?>
-    <button class="btn btn-danger" onclick="myAccount.close()">close</button>
+    <div style="text-align: center;">
+        <button class="btn btn-danger" onclick="myAccount.close()">Close</button>
+    </div>
   </dialog>
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex align-items-center">
