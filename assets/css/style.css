@@ -21,6 +21,19 @@ h5,
 h6 {
   font-family: "Raleway", sans-serif;
 }
+
+/* Style for image icon */
+img {
+  width: 20px; /* Adjust the size as needed */
+  height: 20px;
+}
+
+/* Style for font icon (FontAwesome) */
+.fa {
+  font-size: 24px; /* Adjust the size as needed */
+  color: #f22d2d;    /* Set the desired color */
+}
+
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
@@ -1146,3 +1159,4 @@ section {
   font-weight: 600;
   color: #0062cc;
 }
+

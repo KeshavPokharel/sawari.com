@@ -60,6 +60,12 @@
                 <li><a href="services.php">Services</a></li>
                 </ul>
           <li><a href="contact.php">Contact</a></li>
+          <nav>
+  <ul>
+    <li><a href="#"><img src="search.png"/></a></li>
+  </ul>
+</nav>
+
           <?php if (isset($_COOKIE['auth_token'])) {
             echo '<li><a class="getstarted" style=" cursor:pointer;" onclick="myAccount.showModal()">My Account</a></li>';
           } else {
