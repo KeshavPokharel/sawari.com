@@ -57,6 +57,85 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      if (!preg_match('/^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/', $password)) {
         $errors[] = "Password must have at least one capital letter, one special character, and be at least 8 characters long.";
     }
+    $ch = curl_init();
+
+    // Set the URL that you want to GET by using the CURLOPT_URL option.
+    curl_setopt($ch, CURLOPT_URL, "https://emailvalidation.abstractapi.com/v1/?api_key=436b0d69bc9e4a1c933de17b39cf5f62&email=$email");
+    
+    // Set CURLOPT_RETURNTRANSFER so that the content is returned as a variable.
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    
+    // Set CURLOPT_FOLLOWLOCATION to true to follow redirects.
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    
+    // Execute the request.
+    $data = curl_exec($ch);
+    
+    // Check for cURL errors and handle them if necessary.
+    if ($data === false) {
+        echo 'cURL error: ' . curl_error($ch);
+        // Handle the error
+    } else {
+        // Close the cURL handle.
+        curl_close($ch);
+    
+        // Decode the JSON response into a PHP array
+        $response = json_decode($data, true);
+    
+        if (isset($response['is_disposable_email']['value']) && $response['is_disposable_email']['value'] === true) {
+            $errors[] = "Please Do Not use disposabel email";
+        }
+    
+        if (isset($response['is_valid_format']['value']) && $response['is_valid_format']['value'] === false) {
+            $errors[] = "Enter a valid email format";
+        }
+    
+        if (isset($response['deliverability']) && $response['deliverability'] !== "DELIVERABLE") {
+            $errors[] = "Please enter a valid email address";
+        }
+    
+        if (isset($response['is_smtp_valid']['value']) && $response['is_smtp_valid']['value'] === false) {
+            $errors[] = "This email address does not support sending or receving mails";
+        }
+    }
+    $ch = curl_init();
+
+// Set the URL that you want to GET by using the CURLOPT_URL option.
+curl_setopt($ch, CURLOPT_URL, "https://phonevalidation.abstractapi.com/v1/?api_key=51dd1bfa0aba4884abcc1a8a4399de17&phone=$phone");
+
+// Set CURLOPT_RETURNTRANSFER so that the content is returned as a variable.
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+// Set CURLOPT_FOLLOWLOCATION to true to follow redirects.
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+
+// Execute the request.
+$data = curl_exec($ch);
+
+// Check for cURL errors and handle them if necessary.
+if ($data === false) {
+    echo 'cURL error: ' . curl_error($ch);
+    // Handle the error
+} else {
+    // Close the cURL handle.
+    curl_close($ch);
+
+    // Decode the JSON response into a PHP array
+    $response = json_decode($data, true);
+
+    if (isset($response['valid']) && $response['valid'] === false) {
+        $errors[] = "Input a valid phone number format.";
+    }
+
+    if (
+        !isset($response['country']['code']) || 
+        !isset($response['country']['name']) ||
+        ($response['country']['code'] !== "NP" && $response['country']['name'] !== "Nepal")
+    ) {
+        $errors[] = "Only numbers from Nepal are supported.";
+    }
+}
+
     if (empty($errors)) {
         // Perform database insertion
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
