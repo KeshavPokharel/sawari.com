@@ -16,6 +16,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = isset($_POST["phone"]) ? $_POST["phone"] : "";
     $password = isset($_POST["password"]) ? $_POST["password"] : "";
     $cpassword = isset($_POST["cpassword"]) ? $_POST["cpassword"] : "";
+    //validate full name
+    if (!preg_match('/^[a-zA-Z ]{5,}$/', $fullname)) {
+        $errors[] = "Full name must contain alphabetic characters (A-Z, a-z) and be at least 5 characters long.";
+    }
 
     // Check if 'cpassword' is empty or not provided
     if (empty($cpassword)) {
@@ -46,7 +50,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (mysqli_num_rows($existingUsernameResult) > 0) {
         $errors[] = "Username already exists.";
     }
+    //age validation 
+    $today = new DateTime();
+$date = new DateTime($dob);
+$age = $today->diff($date)->y;
 
+if ($age < 16) {
+    $errors[] = "You must be at least 16 years old to register.";
+}
     // Check if the email already exists in the database
     $existingEmailQuery = "SELECT * FROM users WHERE email = '$email'";
     $existingEmailResult = mysqli_query($link, $existingEmailQuery);
