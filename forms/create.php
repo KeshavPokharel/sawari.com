@@ -57,6 +57,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      if (!preg_match('/^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/', $password)) {
         $errors[] = "Password must have at least one capital letter, one special character, and be at least 8 characters long.";
     }
+    if (substr($phone, 0, 3) !== "977") {
+        $phone = "977" . $phone;
+    }
     $ch = curl_init();
 
     // Set the URL that you want to GET by using the CURLOPT_URL option.
