@@ -61,11 +61,14 @@
                 </ul>
           <li><a href="contact.php">Contact</a></li>
           <nav>
-  <!-- Add this code within your existing HTML structure -->
-<li>
+          <li>
   <form class="form-inline my-2 my-lg-0" action="search.php" method="GET">
-    <input class="form-control mr-sm-2" type="text" name="query" placeholder="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <div class="input-group" style="margin-left: 10px;">
+      <input class="form-control" type="text" name="query" placeholder="Search">
+      <div class="input-group-append">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </div>
+    </div>
   </form>
 </li>
 

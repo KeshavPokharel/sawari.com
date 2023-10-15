@@ -67,7 +67,7 @@
                 </ul>
           <li><a href="contact.php">Contact</a></li>
           <nav>
-  <!-- Add this code within your existing HTML structure -->
+ 
   <li>
   <form class="form-inline my-2 my-lg-0" action="search.php" method="GET">
     <div class="input-group" style="margin-left: 10px;">
