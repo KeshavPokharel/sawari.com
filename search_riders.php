@@ -1,88 +1,57 @@
 <?php
-include 'forms/loginCheck.php';
-?>
-<?php
-session_start();
-
-// If admin is not logged in, redirect to the login page
-if (!isset($_SESSION['admin_id'])) {
-    header("Location: admin_login.php");
-    exit;
-}
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+// Replace with your database connection details
 require_once "script/db_connect.php";
 
-// Function to fetch pending rider requests
-function getPendingRiderRequests()
-{
-    global $link;
-    $query = "SELECT * FROM riders WHERE state = 'pending' ORDER BY rider_id ASC";
-    $result = $link->query($query);
-    $requests = array();
+$searchResults = array(); // Initialize an array to store search results
 
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $requests[] = $row;
+if (isset($_GET['query'])) {
+    $searchQuery = $_GET['query'];
+
+    // Create an SQL query to search for riders based on rider_id or full_name
+    $search_query = "SELECT * FROM riders 
+                    WHERE rider_id = '$searchQuery' OR full_name LIKE '%$searchQuery%'";
+
+    $search_result = $link->query($search_query);
+
+    if ($search_result->num_rows > 0) {
+        while ($row = $search_result->fetch_assoc()) {
+            $searchResults[] = $row;
         }
     }
-
-    return $requests;
 }
 
-// Handle status update request
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["request_id"]) && isset($_POST["status"])) {
-    $requestId = $_POST["request_id"];
-    $status = $_POST["status"];
-
-    // Update the status in the database
-    $update_query = "UPDATE riders SET state = '$status' WHERE rider_id = $requestId";
-
-    if ($link->query($update_query) === TRUE) {
-        // Update successful
-        http_response_code(200);
-    } else {
-        // Update failed
-        http_response_code(500);
-    }
-}
-
-// Get pending rider requests
-$pendingRequests = getPendingRiderRequests();
+$link->close(); // Close the database connection
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sawari: The Next Generation Ride Hailing Platform</title>
-
-    <!-- Favicons -->
-    <link href="assets/img/icon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-    <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
-
-    <!-- Vendor CSS Files -->
+    <title>Rider Search</title>    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-    <!-- Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
-
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  
 </head>
-
 <body>
-   <a href="search_riders.php"> <button class="btn btn-outline-danger ">Rider management</button></a>
-<section id="about" class="about mt-5 table-responsive">
+    <div class="container mt-5">
+        <h1>Rider Search</h1>
+        <a href="admin.php"><button class="btn btn-outline-danger">admin </button></a>
+        <form class="form-inline my-2 my-lg-0 mb-3" action="search_riders.php" method="GET">
+            <input class="form-control mr-sm-2" type="text" name="query" placeholder="Search">
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        
+        <section id="results" class="about table-responsive">
         <table class="table">
             <thead>
                 <tr>
@@ -97,7 +66,7 @@ $pendingRequests = getPendingRiderRequests();
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($pendingRequests as $request) { ?>
+                <?php foreach ($searchResults as $request) { ?>
                     <tr>
                         <th scope="row"><?php echo $request['rider_id']; ?></th>
                         <td><?php echo $request['address']; ?></td>
@@ -120,10 +89,11 @@ $pendingRequests = getPendingRiderRequests();
                 <?php } ?>
             </tbody>
         </table>
-    </section>
+        </section>
+    </div>
 
     <script>
-        // AJAX function to update the status without page reload
+        // You can add JavaScript for the updateStatus function here
         function updateStatus(selectElement) {
             const form = selectElement.closest('.update-form');
             const formData = new FormData(form);
@@ -144,6 +114,5 @@ $pendingRequests = getPendingRiderRequests();
                 });
         }
     </script>
-  
-
 </body>
+</html>
